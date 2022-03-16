@@ -94,11 +94,9 @@ class TickerBase():
         if self._fundamentals:
             return
 
-        ticker_url = "{}/{}".format(self._scrape_url, self.ticker)
+        ticker_url = f"{self._scrape_url}/{self.ticker}"
 
-        # get info and sustainability
-        data = utils.get_json(ticker_url, proxy, self.session)
-        return data
+        return utils.get_json(ticker_url, proxy, self.session)
 
     def history(self, period="1mo", interval="1d",
                 start=None, end=None, prepost=False, actions=True,
